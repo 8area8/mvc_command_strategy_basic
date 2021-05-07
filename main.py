@@ -2,7 +2,7 @@
 
 
 class Command:
-    """Base command."""
+    """Command de base."""
 
     def execute(self, app):
         """Résoud du code.
@@ -21,7 +21,7 @@ class WrongCommand(Command):
 
 
 class HomeCommand(Command):
-    """Command pour aller au menu principal."""
+    """Va au menu principal."""
 
     def execute(self, app):
         app.change_page("home")
@@ -101,7 +101,7 @@ class Controller:
     """Classe principale qui gère le séquencage de l'application.
 
     Args:
-        - view (View): une vue. La vue représente une page, et peut être changé avec
+        - view (View): une vue. La vue représente une page, et peut être changée avec
         la méthode "change_page".
         - running (bool): True pour faire tourner le programme, False pour l'arrêter.
     """
@@ -123,8 +123,8 @@ class Controller:
         self.running = True
         while self.running:
             self.view.display()
-            choice = self.view.ask_for_choice()
-            choice.execute(app=self)
+            command = self.view.ask_for_choice()
+            command.execute(app=self)
 
 
 if __name__ == "__main__":
